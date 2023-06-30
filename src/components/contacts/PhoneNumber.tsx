@@ -3,6 +3,9 @@ import { Text, View, StyleSheet } from "react-native";
 
 const PhoneNumber = (props) => {
   const { phoneNums } = props;
+  if (!phoneNums) {
+    return null;
+  }
   if (phoneNums?.length === 1) {
     return (
       <View style={styles.container}>

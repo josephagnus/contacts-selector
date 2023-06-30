@@ -13,30 +13,28 @@ import MultipleContacts from "./MultipleContacts";
 import { RootStackParamList } from "../../screens/types";
 
 const ContactItem = (props) => {
-
   const { phoneNumbers } = props;
 
   const uniqueRecords = useMemo(() => {
-    return phoneNumbers.filter(
+    return phoneNumbers?.filter(
       (obj, index) =>
-      phoneNumbers.findIndex((item) => item.number === obj.number) ===
-        index
+        phoneNumbers.findIndex((item) => item.number === obj.number) === index
     );
   }, [phoneNumbers]);
 
   const [showBottomSheet, setShowBottomsheet] = useState(false);
   const navigator =
-  useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const pressHandler = useCallback(() => {
     if (uniqueRecords.length > 1) {
       setShowBottomsheet(true);
     } else {
-      navigator.navigate('Home', { input: uniqueRecords[0].number })
+      navigator.navigate("Home", { input: uniqueRecords[0].number });
     }
   }, []);
   return (
     <>
-      <TouchableOpacity onPress={pressHandler}>
+      <TouchableOpacity onPress={pressHandler} disabled={!uniqueRecords}>
         <View style={styles.container}>
           <View style={styles.imgContainer}>
             <Image
@@ -51,12 +49,14 @@ const ContactItem = (props) => {
           </View>
         </View>
       </TouchableOpacity>
-      <MultipleContacts
-        isVisible={showBottomSheet}
-        phoneNumbers={uniqueRecords}
-        intialSelected={uniqueRecords[0].number}
-        onDismiss={() => setShowBottomsheet(false)}
-      />
+      {!!phoneNumbers && (
+        <MultipleContacts
+          isVisible={showBottomSheet}
+          phoneNumbers={uniqueRecords}
+          intialSelected={uniqueRecords[0].number}
+          onDismiss={() => setShowBottomsheet(false)}
+        />
+      )}
     </>
   );
 };
