@@ -6,6 +6,8 @@ In case of multiple contacts user need to click on the bottomsheet and select th
 
 Commands to run the app
 
+### Please use the node version 18.2.0 or lower
+
 To install the dependencies
   ```
    npm install
@@ -22,8 +24,6 @@ To run the testcase
   ```
    npm test
   ```
-
-Please use the node version 18.2.0 or lower
 
 To run the coverage
   ```
