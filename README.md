@@ -1,8 +1,7 @@
 # contacts-selector
 
-This is an app which helps to select on of the contacts from user
-In case of single contact user can directly click on the contact list
-In case of multiple contacts user need to click on the bottomsheet and select the contact needed
+This is an app which helps to select and copy the contacts from user's phone.
+If there is only one contact, user can directly click on the contact to copy the number, else, user needs to select from the list of contacts displayed in the bottomsheet.
 
 Commands to run the app
 
@@ -29,3 +28,6 @@ To run the coverage
   ```
    npm run coverage
   ```
+
+Regards to TANG App,
+Agnus
