@@ -23,6 +23,8 @@ To run the testcase
    npm test
   ```
 
+Please use the node version 18.2.0 or lower
+
 To run the coverage
   ```
    npm run coverage
